@@ -25,12 +25,23 @@ public class AdCampaignContoller {
         this.adCampaignService = adCampaignService;
     }
 
+    /**
+     * Pushes the event data to event queue.
+     * @param event - event data
+     * @return - 200 if event is pushed to queue successfully.
+     */
     @PostMapping("/event")
     public ResponseEntity<Void> addEvent(@RequestBody AdCampaignEventDto event) {
         adCampaignService.pushEvent(event);
         return ResponseEntity.ok().build();
     }
 
+    /**
+     * Fecthes the clicks count for the given ad campaign for tge given time window.
+     * @param campaignId - ad identifier.
+     * @param duration - time window from the current time.
+     * @return - clicks count
+     */
     @GetMapping("/{campaignId}/clicks")
     public ResponseEntity<AdMetricDto> getClicks(@PathVariable("campaignId") long campaignId, @RequestParam("duration") Duration duration) {
         LocalDateTime startDateTime = LocalDateTime.now();
@@ -41,6 +52,12 @@ public class AdCampaignContoller {
         return ResponseEntity.ok(responseDto);
     }
 
+    /**
+     * Fetches the views count for the given ad campaign for tge given time window.
+     * @param campaignId - ad identifier.
+     * @param duration - time window from the current time.
+     * @return - clicks count
+     */
     @GetMapping("/{campaignId}/impressions")
     public ResponseEntity<AdMetricDto> getImpressions(@PathVariable("campaignId") long campaignId, @RequestParam("duration") Duration duration) {
         LocalDateTime startDateTime = LocalDateTime.now();
@@ -51,6 +68,12 @@ public class AdCampaignContoller {
         return ResponseEntity.ok(responseDto);
     }
 
+    /**
+     * Fetches the addToCart count for the given ad campaign for the given time window.
+     * @param campaignId - ad identifier.
+     * @param duration - time window from the current time.
+     * @return - clicks count
+     */
     @GetMapping("/{campaignId}/clickToBasket")
     public ResponseEntity<AdMetricDto> getAddToBasket(@PathVariable("campaignId") long campaignId, @RequestParam("duration") Duration duration) {
         LocalDateTime startDateTime = LocalDateTime.now();

@@ -1,16 +1,14 @@
-# Getting Started
+# AdCampaignService
 
-### Reference Documentation
-For further reference, please consider the following sections:
+### Purpose
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/3.4.3/maven-plugin)
-* [Create an OCI image](https://docs.spring.io/spring-boot/3.4.3/maven-plugin/build-image.html)
+* This service provides apis to ingest the incoming event stream from different tenants (retailers) for multiples events like ad view, click and addToCart action by the users on respective retailer website.
+* Each retailer is treated as an individual tenant on the platform.
 
-### Maven Parent overrides
+### Scope
 
-Due to Maven's design, elements are inherited from the parent POM to the project POM.
-While most of the inheritance is fine, it also inherits unwanted elements like `<license>` and `<developers>` from the parent.
-To prevent this, the project POM contains empty overrides for these elements.
-If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
+Apis assumes in the incoming request the user in request context is registered or has access to only a single tenant at a time.Hence data lookup happens into that particular tenant only.
 
+### Not in scope
+
+Apis does not support aggregating results from multiple tenants if user in request context has acccess to multiple tenants.

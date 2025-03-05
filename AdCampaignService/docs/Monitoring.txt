@@ -1,0 +1,17 @@
+For realtime monitoring of application perf, we can build an observability platform using:
+    a. Prometheus for metrics collection
+    b. Grafana for realtime dashboard and alerting.
+
+Metrics to be collected:
+
+Infra level:
+    a. Memory Utilization - Service Instances, Worker Instances, DB, Kakfka, Flink, Redis
+    b. CPU utilization - Service Instances, Worker Instances, DB, Kakfka, Flink, Redis
+    c. Message/Event Backlog in Apache Kafka
+    d. Processing Rate in Apache Flink
+
+Application Level:
+    a. Overall request traffic on the service.
+    b. Success/Failure rate for overall traffic.
+    c. Request processing time (latency) - P95
+    d. Cache Miss/Hit ratio.

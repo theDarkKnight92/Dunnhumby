@@ -1,0 +1,9 @@
+1. To provision a new tenant (Retailer):
+    a. Provision a new Cassandra datastore and Apache Flink instance infra using 'Infra As a Code' model like ARM templates.
+    b. Update the config server with new tenant id and db connection properties.
+
+2. In case business logic update in AdCampaignService or Workers.
+    a. Create new build artifact for AdCampaignService / Workers.
+    b. Rollout the latest build on the service cluster incrementally after careful monitoring and proper checkouts and validations.
+
+3. API Gateway, Apache Kafka & Redis need to proisioned one time at the time of prod env setup which can again be managed via ARM templates.

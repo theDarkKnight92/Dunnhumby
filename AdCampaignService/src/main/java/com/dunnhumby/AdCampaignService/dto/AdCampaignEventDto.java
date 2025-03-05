@@ -6,17 +6,37 @@ import java.time.LocalDateTime;
 
 public class AdCampaignEventDto {
 
-    private long adCampaignId;
+    private String tenantId;
+
+    private Long productId;
+
+    private Long adCampaignId;
 
     private AdCampaignUserEvent event;
 
     private LocalDateTime eventDateTime;
 
-    public long getAdCampaignId() {
+    public String getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(String tenantId) {
+        this.tenantId = tenantId;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public Long getAdCampaignId() {
         return adCampaignId;
     }
 
-    public void setAdCampaignId(long adCampaignId) {
+    public void setAdCampaignId(Long adCampaignId) {
         this.adCampaignId = adCampaignId;
     }
 

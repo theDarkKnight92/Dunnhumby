@@ -8,7 +8,6 @@ public class AdMetricDto {
 
     private long additionsToCart;
 
-
     public long getClicks() {
         return clicks;
     }

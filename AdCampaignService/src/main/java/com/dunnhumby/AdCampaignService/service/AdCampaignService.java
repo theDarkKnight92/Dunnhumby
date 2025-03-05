@@ -1,12 +1,13 @@
 package com.dunnhumby.AdCampaignService.service;
 
+import com.dunnhumby.AdCampaignService.dto.AdCampaignEventDto;
 import com.dunnhumby.AdCampaignService.dto.AdMetricDto;
 
 import java.time.LocalDateTime;
 
 public interface AdCampaignService {
 
-    void pushEvent(long camapaignId, String eventType, LocalDateTime eventDateTime);
+    void pushEvent(AdCampaignEventDto event);
 
     long getClicksOnAdCampaign(long campaignId, LocalDateTime startDateTime, LocalDateTime endDateTime);
 

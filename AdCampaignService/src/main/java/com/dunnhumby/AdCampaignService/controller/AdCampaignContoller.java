@@ -27,7 +27,7 @@ public class AdCampaignContoller {
 
     @PostMapping("/event")
     public ResponseEntity<Void> addEvent(@RequestBody AdCampaignEventDto event) {
-        adCampaignService.pushEvent(event.getAdCampaignId(), event.getEvent().name(), event.getEventDateTime());
+        adCampaignService.pushEvent(event);
         return ResponseEntity.ok().build();
     }
 

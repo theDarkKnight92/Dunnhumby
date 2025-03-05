@@ -1,9 +1,12 @@
-1. To provision a new tenant (Retailer):
-    a. Provision a new Cassandra datastore and Apache Flink instance infra using 'Infra As a Code' model like ARM templates.
-    b. Update the config server with new tenant id and db connection properties.
+CI/CD Pipelines:
 
-2. In case business logic update in AdCampaignService or Workers.
-    a. Create new build artifact for AdCampaignService / Workers.
-    b. Rollout the latest build on the service cluster incrementally after careful monitoring and proper checkouts and validations.
+ a. Build pipelines each for generating artifacts for AdCampaignService and workers service.
+ b. Deployment pipeline for provisioning infra - we can use ARM templates (Infra as a code model) to configure all the components needed.
+    i. ARM template and corresponding pipeline to provisiom fra while onboarding a new tenant:
+        - Template will have metadata for new Cassandra and Apache Flink instances and configs will be configured into the pipeline.
+        - Template will have metadata to add new properties to config server for new tenant db connection details.
+ c. Deployemnt pipeline for rolling out latest build on AdCampaignService.
+ d. Deployemnt pipeline for rolling out latest build on Workers.
 
-3. API Gateway, Apache Kafka & Redis need to proisioned one time at the time of prod env setup which can again be managed via ARM templates.
+ e. API Gateway, Apache Kafka & Redis need to proisioned one time at the time of prod env setup which can again be managed via ARM templates.
+    For infra configs like brokers or partitions in case of Kafka kindly update the same into deployment pipeline and trigger.
